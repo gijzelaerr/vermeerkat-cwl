@@ -15,4 +15,4 @@ images:
 	$(MAKE) -C images
 
 run: images .virtualenv
-	.virtualenv/bin/cwl-runner workflow.cwl job.cwl
+	.virtualenv/bin/cwl-runner --outdir results --cachedir cache cwl/workflow.cwl cwl/job.cwl
