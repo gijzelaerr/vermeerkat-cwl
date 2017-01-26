@@ -2,7 +2,8 @@ cwlVersion: v1.0
 class: CommandLineTool
 requirements:
   - class: DockerRequirement
-    dockerPull: vermeerkat/aoflagger
+    dockerImageId: vermeerkat/aoflagger
+#    dockerFile: ../images/aoflagger/Dockerfile
   - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:

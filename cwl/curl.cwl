@@ -2,7 +2,7 @@ cwlVersion: v1.0
 class: CommandLineTool
 requirements:
   DockerRequirement:
-    dockerPull: vermeerkat/curl
+    dockerImageId: vermeerkat/curl
 baseCommand: [curl, -O, -L, -C, -]
 inputs:
   url:
