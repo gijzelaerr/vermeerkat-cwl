@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-hints:
+requirements:
   DockerRequirement:
     dockerPull: vermeerkat/h5toms
 baseCommand: [h5toms.py, -o, result.ms]
