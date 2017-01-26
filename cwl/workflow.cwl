@@ -21,3 +21,11 @@ steps:
     in:
       h5: curl/downloaded
     out: [ms]
+
+  aoflagger:
+    run: aoflagger.cwl
+    in:
+      ms: h5toms/ms
+    out:
+        [ms]
+
