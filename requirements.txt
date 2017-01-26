@@ -1,2 +1,3 @@
 #toil[aws,mesos,azure,google,encryption,cwl]
 toil[cwl,google,aws,encryption]
+#cwlref-runner
