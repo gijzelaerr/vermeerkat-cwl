@@ -1,12 +1,9 @@
-.PHONY: curl h5toms aoflagger
+.PHONY: curl h5toms 
 
-all: curl h5toms aoflagger
+all: curl h5toms
 
 curl:
 	$(MAKE) -C curl build
 
 h5toms:
 	$(MAKE) -C h5toms build
-
-aoflagger:
-	$(MAKE) -C aoflagger build

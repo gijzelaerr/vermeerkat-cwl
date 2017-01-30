@@ -2,21 +2,22 @@ cwlVersion: v1.0
 class: CommandLineTool
 requirements:
   - class: DockerRequirement
+    dockerFile: |
+       FROM kernsuite/base:1
+       RUN docker-apt-install aoflagger
     dockerImageId: vermeerkat/aoflagger
-#    dockerFile: ../images/aoflagger/Dockerfile
   - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
-      - $(inputs.ms)
-baseCommand: [aoflagger]
+      - entry: $(inputs.ms)
+        entryname: flagged.ms
+        writable: true
+baseCommand: "aoflagger"
+arguments: ["flagged.ms"]
 inputs:
-  ms:
-    type: Directory
-    inputBinding:
-      position: 1
-      valueFrom: $(self.basename)
+  ms: Directory
 outputs:
   ms:
     type: Directory
     outputBinding:
-      glob: $(inputs.ms)
+      glob: flagged.ms
