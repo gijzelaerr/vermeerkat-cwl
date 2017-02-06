@@ -1,7 +1,10 @@
 cwlVersion: v1.0
 class: CommandLineTool
 requirements:
-  DockerRequirement:
+  - class: DockerRequirement
+    dockerFile: |
+      FROM kernsuite/base:1
+      RUN docker-apt-install curl
     dockerImageId: vermeerkat/curl
 baseCommand: [curl, -O, -L, -C, -]
 inputs:

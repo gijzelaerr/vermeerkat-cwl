@@ -11,8 +11,6 @@ clean:
 	.virtualenv/bin/pip install --upgrade pip setuptools
 	.virtualenv/bin/pip install -r requirements.txt
 
-images:
-	$(MAKE) -C images
 
-run: images .virtualenv
+run: .virtualenv
 	.virtualenv/bin/cwl-runner --outdir results --cachedir cache cwl/workflow.cwl cwl/job.cwl

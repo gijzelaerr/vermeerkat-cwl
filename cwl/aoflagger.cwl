@@ -1,5 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
+
 requirements:
   - class: DockerRequirement
     dockerFile: |
@@ -12,10 +13,13 @@ requirements:
       - entry: $(inputs.ms)
         entryname: flagged.ms
         writable: true
+
 baseCommand: "aoflagger"
 arguments: ["flagged.ms"]
+
 inputs:
   ms: Directory
+
 outputs:
   ms:
     type: Directory

@@ -1,7 +1,10 @@
 cwlVersion: v1.0
 class: CommandLineTool
 requirements:
-  DockerRequirement:
+  - class: DockerRequirement
+    dockerFile: |
+      FROM kernsuite/base:dev
+      RUN docker-apt-install python-katdal python-casacore
     dockerImageId: vermeerkat/h5toms
 baseCommand: [h5toms.py, -o, result.ms]
 inputs:
