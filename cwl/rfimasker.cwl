@@ -5,19 +5,24 @@ requirements:
   - class: DockerRequirement
     dockerFile: |
        FROM kernsuite/base:1
-       RUN docker-apt-install aoflagger
-    dockerImageId: vermeerkat/aoflagger
+       RUN docker-apt-install python-rfimasker
+    dockerImageId: vermeerkat/rfimasker
   - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
       - entry: $(inputs.ms)
         writable: true
 
-baseCommand: "aoflagger"
+baseCommand: "/usr/bin/mask_ms.py"
 arguments: [$( inputs.ms.basename )]
 
 inputs:
-  ms: Directory
+  ms:
+    type: Directory
+  mask:
+    type: File
+    inputBinding:
+      position: 1
 
 outputs:
   ms:

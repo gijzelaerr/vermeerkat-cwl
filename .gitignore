@@ -3,3 +3,4 @@
 cache/
 results/
 
+data/rfi_mask.pickle
