@@ -14,14 +14,16 @@ requirements:
         writable: true
 
 baseCommand: "/usr/bin/mask_ms.py"
-arguments: [$( inputs.ms.basename )]
 
 inputs:
   ms:
     type: Directory
+    inputBinding:
+      position: 2
   mask:
     type: File
     inputBinding:
+      prefix: -m
       position: 1
 
 outputs:

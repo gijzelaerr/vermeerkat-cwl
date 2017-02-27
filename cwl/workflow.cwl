@@ -1,8 +1,10 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  url: string
-  mask: File
+  url:
+   type: string
+  mask:
+   type: File
 
 outputs:
   ms:
