@@ -21,7 +21,7 @@ for param in parsed['parameters']:
     print("  {}:".format(param['name']))
 
     # sphe style optional
-    if 'default' in param and param['default'] == None:
+    if 'default' in param:
         optional = "?"
     else:
         optional = ""
@@ -36,8 +36,10 @@ for param in parsed['parameters']:
     elif type(type_) in (unicode, str):
         if type_.startswith('list:'):
             print("    type:")
-            print("    - type: array")
-            print("      items: {}".format(type_[5:].format("")))
+            if optional:
+                print("      - \"null\"")
+            print("      - type: array")
+            print("        items: {}".format(typemap[type_[5:]].format("")))
         else:
             print("    type: {}".format(typemap[type_].format(optional)))
     elif type(type_) in (list, tuple):
@@ -48,7 +50,7 @@ for param in parsed['parameters']:
         for subtype in type_:
             if subtype.startswith('list:'):
                 print("      - type: array")
-                print("        items: {}".format(subtype[5:].format("")))
+                print("        items: {}".format(typemap[subtype[5:]].format("")))
             else:
                 print("      - {}".format(typemap[subtype].format("")))
     else:
@@ -59,4 +61,5 @@ for param in parsed['parameters']:
     if 'default' in param and param['default'] != None:
         print("    default: {}".format(param['default']))
 
-    
+
+ 

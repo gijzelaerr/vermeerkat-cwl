@@ -1,6 +1,6 @@
 *.h5
 .virtualenv*/
-cache/
+cache
 results/
 
 data/rfi_mask.pickle
