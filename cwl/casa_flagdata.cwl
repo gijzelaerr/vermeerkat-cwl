@@ -72,12 +72,11 @@ inputs:
     doc: "Flag only the auto-correlations"
     default: False
   inpfile:
-    # warning: found multiple types. please verify
     type:
       - "null"
       - File
       - type: array
-        items: string
+        items: File
     doc: "Input ASCII file, list of files or Python list of strings with flag commands"
   reason:
     type:
@@ -144,7 +143,6 @@ inputs:
     doc: "Upper limiting elevation (in degrees)"
     default: 90
   ntime:
-    # warning: found multiple types. please verify
     type:
       - "null"
       - float
