@@ -3,28 +3,28 @@ class: CommandLineTool
 
 requirements:
   - class: DockerRequirement
-    dockerFile: |
-       FROM kernsuite/base:2
-       RUN docker-apt-install casalite
-       ADD casawrap.py /usr/local/bin
-    dockerImageId: vermeerkat/casalite
+    dockerImageId: vermeerkat/casa_flagdata
   - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
-      - entry: $(inputs.msname)
+      - entry: $(inputs.vis)
         writable: true
+      - entryname: parameters.json
+        entry: $(JSON.stringify(inputs))
+  - class: InplaceUpdateRequirement
+    inplaceUpdate: true
 
 baseCommand: "/usr/local/bin/casawrap.py"
-arguments: [$( inputs.msname.basename )]
+arguments: ["flagdata"]
 
 outputs:
   msname:
     type: Directory
     outputBinding:
-      glob: $( inputs.msname.basename )
+      glob: $( inputs.vis.basename )
 
 inputs:
-  msname:
+  vis:
     type: Directory
     doc: "Name of MS file or calibration table"
   mode:
@@ -76,7 +76,7 @@ inputs:
       - "null"
       - File
       - type: array
-        items: File
+        items: string
     doc: "Input ASCII file, list of files or Python list of strings with flag commands"
   reason:
     type:
@@ -284,7 +284,3 @@ inputs:
   outfile:
     type: File?
     doc: "Name of output file to save current parameters. If empty, save to FLAG_CMD"
-  async:
-    type: boolean?
-    doc: "If true the taskname must be started using flagdata(...)"
-    default: False

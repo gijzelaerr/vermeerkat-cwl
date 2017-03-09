@@ -2,5 +2,5 @@
 .virtualenv*/
 cache
 results/
-
+data/*.ms/
 data/rfi_mask.pickle

@@ -1,0 +1,7 @@
+FROM kernsuite/base:2
+RUN docker-apt-install casalite
+RUN docker-apt-install drive-casa
+ENV USER root
+ADD casawrap.py /usr/local/bin
+RUN chmod 755 /usr/local/bin/casawrap.py
+CMD /usr/local/bin/casawrap.py

@@ -19,6 +19,9 @@ typemap = {
 parsed = json.load(open(sys.argv[1]))
 for param in parsed['parameters']:
     print("  {}:".format(param['name']))
+    print("    inputBinding:")
+    print("      prefix: --{}=".format(param['name']))
+    print("      separate: false")
 
     # sphe style optional
     if 'default' in param:
@@ -27,6 +30,8 @@ for param in parsed['parameters']:
         optional = ""
 
     type_ = param['dtype']
+    print("      valueFrom: ${{ if (self) return self + \":{}\"; else return null; }}".format(type_))
+
     if "choices" in param:
         print("    type:")
         if optional:
