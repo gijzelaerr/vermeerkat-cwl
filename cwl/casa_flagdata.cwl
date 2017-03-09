@@ -11,14 +11,12 @@ requirements:
         writable: true
       - entryname: parameters.json
         entry: $(JSON.stringify(inputs))
-  - class: InplaceUpdateRequirement
-    inplaceUpdate: true
 
 baseCommand: "/usr/local/bin/casawrap.py"
 arguments: ["flagdata"]
 
 outputs:
-  msname:
+  ms:
     type: Directory
     outputBinding:
       glob: $( inputs.vis.basename )

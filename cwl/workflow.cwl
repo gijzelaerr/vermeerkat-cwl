@@ -9,7 +9,7 @@ inputs:
 outputs:
   ms:
     type: Directory
-    outputSource: h5toms/ms
+    outputSource: casa_flagdata/ms
 
 
 steps:
@@ -38,4 +38,11 @@ steps:
       ms: rfimasker/ms
     out:
         [ms]
+
+  casa_flagdata:
+    run: casa_flagdata.cwl
+    in:
+      vis: rfimasker/ms
+    out:
+       [ms]
 
