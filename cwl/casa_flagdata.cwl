@@ -1,6 +1,8 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 requirements:
   - class: DockerRequirement
     dockerImageId: vermeerkat/casa_flagdata
@@ -11,6 +13,9 @@ requirements:
         writable: true
       - entryname: parameters.json
         entry: $(JSON.stringify(inputs))
+  - class: cwltool:InplaceUpdateRequirement
+    inplaceUpdate: true
+
 
 baseCommand: "/usr/local/bin/casawrap.py"
 arguments: ["flagdata"]

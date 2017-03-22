@@ -1,6 +1,8 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+$namespaces:
+  cwltool: http://commonwl.org/cwltool#
 requirements:
   - class: DockerRequirement
     dockerFile: |
@@ -12,6 +14,8 @@ requirements:
     listing:
       - entry: $(inputs.ms)
         writable: true
+  - class: cwltool:InplaceUpdateRequirement
+    inplaceUpdate: true
 
 baseCommand: "/usr/bin/mask_ms.py"
 arguments: [ "-m", $( inputs.mask.path ), $( inputs.ms.basename ), ]

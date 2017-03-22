@@ -15,4 +15,4 @@ data/rfi_mask.pickle:
 	cd data && tar zxvf rfi_mask.pickle.tgz
 
 run: .virtualenv data/rfi_mask.pickle
-	.virtualenv/bin/cwltool --outdir results --cachedir cache cwl/workflow.cwl cwl/job.cwl
+	.virtualenv/bin/cwltool --enable-ext --outdir results --cachedir cache cwl/workflow.cwl cwl/job.cwl
